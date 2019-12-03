@@ -10,7 +10,7 @@ import express from "express";
 import path from "path";
 
 // eslint-disable-next-line prettier/prettier
-// const { APP_PORT } = process.env;
+const { APP_PORT } = process.env;
 
 const app = express();
 
@@ -21,4 +21,6 @@ app.get("/hello", (req, res) => {
     res.send("Hello, World!");
 });
 
-app.listen(80, () => console.log(`🚀 Server is listening on port test.`));
+app.listen(APP_PORT, () =>
+    console.log(`🚀 Server is listening on port ${APP_PORT}.`),
+);
