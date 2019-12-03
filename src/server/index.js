@@ -10,7 +10,7 @@ import express from "express";
 import path from "path";
 
 // eslint-disable-next-line prettier/prettier
-const { APP_PORT } = process.env;
+const { APP_PORT } = 80;
 
 const app = express();
 
