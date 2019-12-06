@@ -1,0 +1,225 @@
+.home-page {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+
+    // .fade-out {
+    //     animation: fade 3s ease;
+    // }
+
+    // @keyframes fade {
+    //     0% {
+    //         opacity: 1;
+    //     }
+    //     100% {
+    //         opacity: 0;
+    //     }
+    // }
+
+    .bulle {
+        width: 200px;
+        height: 170px;
+        background-image: url("https://svgsilh.com/svg/156056-ffffff.svg");
+        background-position: 50% 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 120px;
+        left: 220px;
+        filter: drop-shadow(1px 1px 0.5px grey);
+        // transition: translate 4s ease;
+    }
+
+    .bulle:after {
+        content: "I have flair when it  comes to finding money !";
+        text-align: center;
+        width: 150px;
+        color: #fff;
+        font-size: 20px;
+        position: absolute;
+        top: 40px;
+        left: 25px;
+    }
+
+    .pig {
+        width: 200px;
+        height: 150px;
+        background-image: url("https://svgsilh.com/svg/712593-e91e63.svg");
+        background-position: 50% 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        bottom: 0;
+        left: 70px;
+        filter: drop-shadow(1px 2px white);
+        // transition: translate 4s ease;
+    }
+
+    // .translate {
+    //     transform: translate(2000px);
+    // }
+
+    .route {
+        width: 250px;
+        height: 400px;
+        background-image: url("https://svgsilh.com/svg/2009312-ffffff.svg");
+        background-position: 50% 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 100px;
+        right: 70px;
+        filter: drop-shadow(1px 2px 1px grey);
+    }
+
+    .by {
+        position: absolute;
+        bottom: 0;
+        right: 70px;
+        font-style: italic;
+    }
+
+    h1 {
+        color: #e91e63;
+        font-size: 80px;
+        text-align: center;
+        filter: drop-shadow(1px 2px white);
+        margin: 20px;
+    }
+
+    h2 {
+        color: #fff;
+        font-size: 30px;
+        text-align: center;
+        margin: 5px;
+    }
+
+    p {
+        color: #66ccff;
+        font-size: 20px;
+        text-align: center;
+    }
+    .loading-ext {
+        margin-top: 20px;
+        width: 350px;
+        height: 350px;
+        // box-sizing: border-box;
+        border-radius: 50%;
+        border-top: 10px solid #66ccff;
+        position: relative;
+        // animation: rotation 5s linear infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        filter: drop-shadow(1px 2px white);
+        animation: rotationExt 5s linear infinite;
+        cursor: pointer;
+    }
+
+    .loading-ext::before,
+    .loading-ext::after {
+        content: "";
+        width: 350px;
+        height: 350px;
+        position: absolute;
+        left: 0;
+        top: -10px;
+        filter: drop-shadow(1px 2px white);
+        // box-sizing: border-box;
+        border-radius: 50%;
+    }
+
+    .loading-ext::before {
+        border-top: 10px solid #f2f2f2;
+        transform: rotate(120deg);
+    }
+
+    .loading-ext::after {
+        border-top: 10px solid #e91e63;
+        transform: rotate(240deg);
+    }
+
+    @keyframes rotationExt {
+        to {
+            transform: rotate(-360deg);
+        }
+    }
+
+    .loading-int {
+        width: 300px;
+        height: 300px;
+        // box-sizing: border-box;
+        border-radius: 50%;
+        border-top: 10px solid #66ccff;
+        position: relative;
+        filter: drop-shadow(1px 2px white);
+        animation: rotation 5s linear infinite;
+    }
+
+    .loading-int::before,
+    .loading-int::after {
+        content: "";
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        left: 0;
+        top: -10px;
+        // box-sizing: border-box;
+        border-radius: 50%;
+        filter: drop-shadow(1px 2px white);
+    }
+
+    .loading-int::before {
+        border-top: 10px solid #f2f2f2;
+        transform: rotate(120deg);
+    }
+
+    .loading-int::after {
+        border-top: 10px solid #e91e63;
+        transform: rotate(240deg);
+    }
+
+    .loading-int span {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        color: white;
+        position: absolute;
+        color-interpolation-filters: #fff;
+        text-align: center;
+        line-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        animation: loading 5s linear infinite;
+        cursor: pointer;
+
+        .marker {
+            width: 80px;
+            height: auto;
+            filter: drop-shadow(1px 2px white);
+            cursor: pointer;
+        }
+        .card {
+            margin: 20px;
+            width: 150px;
+            height: auto;
+        }
+    }
+
+    @keyframes rotation {
+        to {
+            transform: rotate(720deg);
+        }
+    }
+
+    @keyframes loading {
+        to {
+            transform: rotate(-360deg);
+        }
+    }
+}

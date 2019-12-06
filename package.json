@@ -13,9 +13,7 @@
     "work:server": "npx babel src/server -s --watch --verbose --out-dir bin/server",
     "build:client": "npx webpack --progress --profile --colors",
     "work:client": "npx webpack --env=dev --progress",
-    "build": "npm run build:server && npm run build:client",
-    "heroku-postbuild": "npm run mongo:verify && npm run build",
-    "start": "node bin/server/index.js"
+    "build": "npm run build:server && npm run build:client"
   },
   "lint-staged": {
     "*.js": [
@@ -35,6 +33,7 @@
     "@becode/eslint-config": "^0.6.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.2",
+    "css-loader": "^3.2.1",
     "eslint": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
@@ -43,7 +42,11 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.0.5",
     "lint-staged": "^9.2.5",
+    "node-sass": "^4.13.0",
     "prettier": "^1.18.2",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.1",
+    "svg-inline-loader": "^0.8.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
@@ -57,15 +60,5 @@
     "hooks": {
       "pre-commit": "npx lint-staged"
     }
-  },
-  "main": "bin/server/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MorganeBeCode/trouvkach.git"
-  },
-  "keywords": [],
-  "bugs": {
-    "url": "https://github.com/MorganeBeCode/trouvkach/issues"
-  },
-  "homepage": "https://github.com/MorganeBeCode/trouvkach#readme"
+  }
 }

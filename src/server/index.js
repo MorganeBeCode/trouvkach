@@ -1,26 +1,18 @@
-/* becodeorg/trouvkach
- *
- * /src/server/index.js - Server entry point
- *
- * coded by leny@BeCode
- * started at 06/09/2019
- */
-
 import express from "express";
 import path from "path";
+// import router from "./api-routes";
 
-// eslint-disable-next-line prettier/prettier
-const { APP_PORT } = process.env;
-
+const PORT = 12345;
 const app = express();
 
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
+// app.get("/api", router);
+
 app.get("/hello", (req, res) => {
-    console.log(`ℹ️  (${req.method.toUpperCase()}) ${req.url}`);
-    res.send("Hello, World!");
+    res.json({
+        data: [],
+    });
 });
 
-app.listen(APP_PORT, () =>
-    console.log(`🚀 Server is listening on port ${APP_PORT}.`),
-);
+app.listen(PORT, () => console.log(`🚀 Server is listening on port ${PORT}.`));
