@@ -1,18 +1,15 @@
+/* eslint-disable no-console */
 import express from "express";
 import path from "path";
-// import router from "./api-routes";
+import router from "./api-routes";
 
-const PORT = 12345;
+// eslint-disable-next-line prettier/prettier
+const { APP_PORT, PORT } = process.env;
+const port = APP_PORT || PORT;
 const app = express();
 
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
-// app.get("/api", router);
+app.listen(port, () => console.log(`🚀 Server is listening on port ${port}.`));
 
-app.get("/hello", (req, res) => {
-    res.json({
-        data: [],
-    });
-});
-
-app.listen(PORT, () => console.log(`🚀 Server is listening on port ${PORT}.`));
+app.use("/api", router);

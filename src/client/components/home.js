@@ -1,5 +1,8 @@
-import React, {useState} from "react";
-import Map from "./map";
+/* eslint-disable prettier/prettier */
+/* eslint-disable react/self-closing-comp */
+import React, { useState } from "react";
+// import Map from "./map";
+import LeafletMap from "./leaflet-map";
 
 const Home = () => {
     const [notReady, setReady] = useState(true);
@@ -32,7 +35,7 @@ const Home = () => {
                 <div className={"pig"}></div>
                 <div className={"route"}></div>
                 <div className={"by"}>
-                    <p>By Bonnie and Clyde</p>
+                    <p>{"By Bonnie and Clyde"}</p>
                 </div>
 
                 <div className={"loading-ext"} onClick={handleClick}>
@@ -57,7 +60,7 @@ const Home = () => {
         );
     }
 
-    return <Map />;
+    return <LeafletMap />;
 };
 
 export default Home;
