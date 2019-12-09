@@ -4,18 +4,8 @@ import Map from "./map";
 const Home = () => {
     const [notReady, setReady] = useState(true);
 
-    // const pageTransition = () => {
-    //     const propPig = useRef(null);
-    //     const propHomePage = useRef(null);
-    //     const propBulle = useRef(null);
-    //     propPig.classList.add("translate");
-    //     propBulle.classList.add("translate");
-    //     propHomePage.classList.add("fade-out");
-    // };
-
     const handleClick = () => {
         setReady(false);
-        // pageTransition();
     };
 
     if (notReady) {
@@ -28,11 +18,11 @@ const Home = () => {
                         "Click on the card to discover the ATM's location in Liège"
                     }
                 </p>
-                <div className={"bulle"}></div>
-                <div className={"pig"}></div>
-                <div className={"route"}></div>
+                <div className={"bulle"} />
+                <div className={"pig"} />
+                <div className={"route"} />
                 <div className={"by"}>
-                    <p>By Bonnie and Clyde</p>
+                    <p>{"By Bonnie and Clyde"}</p>
                 </div>
 
                 <div className={"loading-ext"} onClick={handleClick}>
