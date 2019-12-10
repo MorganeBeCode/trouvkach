@@ -4,11 +4,9 @@ import Research from "./research";
 
 const ContainerLeft = () => {
     const [notDisplay, setDisplay] = useState(true);
-    // const [Terminals, setTerminals] = useState([
-    //     {mongodb.connect()}
-    // ])
+
     const handleClick = () => {
-        setDisplay(false);
+        setDisplay(!notDisplay);
     };
     if (notDisplay) {
         return (
@@ -18,17 +16,21 @@ const ContainerLeft = () => {
                         <p>{"Search ATM"}</p>
                     </span>
                 </div>
+                <div className={"pig"} />
+                <div className={"bulle"} />
             </div>
         );
     }
     return (
         <div className={"container-lists"}>
+            <img
+                onClick={handleClick}
+                className={"return-arrow"}
+                src={"https://svgsilh.com/svg/1293400-e91e63.svg"}
+            />
             <Research />
             <ul>
                 <Lists />
-                {/* {Terminals.map(terminal => (
-                    <Lists key={terminal.id} details={terminal} />
-                ))} */}
             </ul>
         </div>
     );
