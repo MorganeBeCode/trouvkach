@@ -21,7 +21,7 @@
     .bulle {
         width: 200px;
         height: 170px;
-        background-image: url("https://svgsilh.com/svg/156056-ffffff.svg");
+        background-image: url("./assets/bulle.svg");
         background-position: 50% 50%;
         background-size: cover;
         background-repeat: no-repeat;
@@ -46,7 +46,7 @@
     .pig {
         width: 200px;
         height: 150px;
-        background-image: url("https://svgsilh.com/svg/712593-e91e63.svg");
+        background-image: url("./assets/pig.svg");
         background-position: 50% 50%;
         background-size: cover;
         background-repeat: no-repeat;
@@ -64,8 +64,7 @@
     .route {
         width: 250px;
         height: 400px;
-        background-image: url("https://svgsilh.com/svg/2009312-ffffff.svg");
-        background-position: 50% 50%;
+        background-image: url("./assets/direction.svg");
         background-size: cover;
         background-repeat: no-repeat;
         position: absolute;

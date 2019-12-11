@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Lists from "./lists";
 import Research from "./research";
+import "../assets/fleche.svg";
 
 const ContainerLeft = () => {
     const [notDisplay, setDisplay] = useState(true);
@@ -8,6 +9,7 @@ const ContainerLeft = () => {
     const handleClick = () => {
         setDisplay(!notDisplay);
     };
+
     if (notDisplay) {
         return (
             <div className={"container-left"}>
@@ -26,7 +28,7 @@ const ContainerLeft = () => {
             <img
                 onClick={handleClick}
                 className={"return-arrow"}
-                src={"https://svgsilh.com/svg/1293400-e91e63.svg"}
+                src={"../assets/fleche.svg"}
             />
             <Research />
             <ul>

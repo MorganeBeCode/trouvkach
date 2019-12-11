@@ -1,5 +1,8 @@
 import React, {useState} from "react";
 import Map from "./map";
+import "../assets/cardpurple.svg";
+import "../assets/marker.svg";
+import "../assets/bulle.svg";
 
 const Home = () => {
     const [notReady, setReady] = useState(true);
@@ -30,15 +33,11 @@ const Home = () => {
                         <span>
                             <img
                                 className={"marker"}
-                                src={
-                                    "https://svgsilh.com/svg/1971129-673ab7.svg"
-                                }
+                                src={"../assets/marker.svg"}
                             />
                             <img
                                 className={"card"}
-                                src={
-                                    "https://svgsilh.com/svg/1300155-673ab7.svg"
-                                }
+                                src={"../assets/cardpurple.svg"}
                             />
                         </span>
                     </div>

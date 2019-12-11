@@ -17,8 +17,7 @@ mongo.connect(url, (err, client) => {
         router.get("/", (req, res) => {
             res.json({
                 status: "API Working!",
-                message:
-                    "Welcome to TrouvKash! Let the pig helping you finding money.",
+                message: "Welcome to TrouvKash! May the pig be with you. ",
             });
         });
 
@@ -87,7 +86,9 @@ mongo.connect(url, (err, client) => {
                         ) {
                             result.push(el);
                         }
-                        index === item.length - 1 && res.json(result);
+                        if(
+                        index === item.length - 1){
+                            res.json(result);
                     });
                 });
         });

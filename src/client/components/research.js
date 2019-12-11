@@ -1,4 +1,5 @@
 import React from "react";
+import "../assets/loupe.svg";
 
 const Research = () => (
     // const handleSubmit = event => {
@@ -14,11 +15,7 @@ const Research = () => (
             // value={"input"}
         />
         <button type={"submit"}>
-            <img
-                src={"https://svgsilh.com/svg/1093184-00bcd4.svg"}
-                width={"24px"}
-                height={"auto"}
-            />
+            <img src={"../assets/loupe.svg"} width={"24px"} height={"auto"} />
         </button>
     </form>
 );

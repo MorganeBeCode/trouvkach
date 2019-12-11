@@ -1,48 +1,53 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import "../assets/banksicons/bnp.png";
+import "../assets/banksicons/belfius.png";
+import "../assets/banksicons/axa.png";
+import "../assets/banksicons/argenta.png";
+import "../assets/banksicons/beobank.png";
+import "../assets/banksicons/bkcp.png";
+import "../assets/banksicons/cbc.png";
+import "../assets/banksicons/bpost.jpg";
+import "../assets/banksicons/crelan.png";
+import "../assets/banksicons/deltalloyd.png";
+import "../assets/banksicons/deutschebank.jpg";
+import "../assets/banksicons/ing.jpg";
+import "../assets/banksicons/kbc.png";
+import "../assets/banksicons/keytrade.png";
 
-const Lists = () => (
-    <div>
-        <li>
-            <img
-                className={"logo-bank"}
-                src={
-                    "https://upload.wikimedia.org/wikipedia/fr/d/d2/Logo_ING.svg"
-                }
-            />
-            <a href={"https://www.ing.be/en/retail"}>{"ING"}</a>
-            <p>{"Rue Puits-en-Sock 1 - 4000 Liège"}</p>
-        </li>
-        <li>
-            <img
-                className={"logo-bank"}
-                src={
-                    "https://upload.wikimedia.org/wikipedia/fr/thumb/3/39/BNP_Paribas_2007.svg/206px-BNP_Paribas_2007.svg.png"
-                }
-            />
-            <a
-                href={
-                    "https://www.bnpparibasfortis.be/fr/Public/Connexion?axes4=priv"
-                }>
-                {"BNP Paribas Fortis"}
-            </a>
-            <p>{"Place Xavier-Neujean 8/10 - 4000 Liège"}</p>
-        </li>
-        <li>
-            <img
-                className={"logo-bank"}
-                src={
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Belfius.svg/1280px-Belfius.svg.png"
-                }
-            />
-            <a
-                href={
-                    "https://www.belfius.be/retail/fr/produits/assurance/vehicules/assurance-auto/index.aspx?&extc=seavauto&extch=pkw&extfor=brandcore&extsit=google&extseg=brd&kw=belfius&extmtype=e&extcrea=360443117940&exttid=kwd-36839279448&extd=c&extdm=&offer=IsCa02C320&dummy=x"
-                }>
-                {"Belfius"}
-            </a>
-            <p>{"Rue Grétry 67 - 4000 Liège"}</p>
-        </li>
-    </div>
-);
+function Lists() {
+    const [usrLoc, setusrLoc] = useState();
+    let [markersList, setmarkersList] = useState();
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(position => {
+            setusrLoc([position.coords.latitude, position.coords.longitude]);
+            fetch(
+                `/api/${position.coords.latitude}/${position.coords.longitude}`,
+            ).then(dataJSON => {
+                dataJSON.json().then(markers => {
+                    markersList = markers;
+                    setmarkersList(markersList);
+                });
+            });
+        });
+    }, []);
+
+    return [
+        markersList &&
+            markersList.map(element => (
+                // eslint-disable-next-line react/jsx-key
+                <li style={{borderColor: `#${element.bankDetails[0].color}`}}>
+                    <img
+                        className={"logo-bank"}
+                        src={`/assets/banksicons/${element.bankDetails[0].icon}`}
+                    />
+                    <a href={element.bankDetails[0].url}>
+                        {element.bankDetails[0].name}
+                    </a>
+                    <p>{element.address}</p>
+                </li>
+            )),
+    ];
+}
 
 export default Lists;
