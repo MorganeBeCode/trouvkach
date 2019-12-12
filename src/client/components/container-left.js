@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import Lists from "./lists";
-import Research from "./research";
 import "../assets/fleche.svg";
 
 const ContainerLeft = () => {
@@ -18,8 +17,10 @@ const ContainerLeft = () => {
                         <p>{"Search ATM"}</p>
                     </span>
                 </div>
-                <div className={"pig"} />
-                <div className={"bulle"} />
+                <div className={"bounce"}>
+                    <div className={"pig"} onClick={handleClick} />
+                    <div className={"bulle"} />
+                </div>
             </div>
         );
     }
@@ -30,7 +31,6 @@ const ContainerLeft = () => {
                 className={"return-arrow"}
                 src={"../assets/fleche.svg"}
             />
-            <Research />
             <ul>
                 <Lists />
             </ul>

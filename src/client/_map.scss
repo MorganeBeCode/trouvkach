@@ -8,7 +8,7 @@
         width: 100%;
         height: 80vh;
         grid-column: 1;
-        background-color: #e91e63;
+        background-color: rgba(233, 30, 99, 0.85);
         border: solid 10px #66ccff;
         border-radius: 1%;
         display: flex;
@@ -20,9 +20,15 @@
         height: 80vh;
         grid-column: 3;
         background-color: rgba(228, 241, 254, 1);
-        border: solid 10px #8a65c7;
         border-radius: 1%;
     }
+}
+
+.map {
+    border: solid 10px #8a65c7;
+    height: 80vh;
+    width: auto;
+    border-radius: 1%;
 }
 
 .container-left {
@@ -84,50 +90,83 @@
             transform: rotate(-360deg);
         }
     }
-
-    .pig {
-        width: 160px;
-        height: 150px;
-        background-image: url("./assets/whitepig.svg");
-        background-position: 50% 50%;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
+    .bounce {
+        height: 300px;
+        width: 300px;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        transform-origin: bottom;
+        animation-name: bounce;
         position: absolute;
-        bottom: 10px;
-        left: 10%;
-        transition: 1s ease-in-out;
-        cursor: pointer;
-        &:hover {
-            transform: translateX(20px);
+        bottom: 0;
+        .pig {
+            width: 160px;
+            height: 150px;
+            background-image: url("./assets/whitepig.svg");
+            background-position: 50% 50%;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            position: absolute;
+            bottom: 10px;
+            left: 10%;
+            filter: drop-shadow(1px 2px grey);
+            transition: 1s ease-in-out;
+            cursor: pointer;
+        }
+
+        .bulle {
+            background-image: url("https://svgsilh.com/svg/156056-ffffff.svg");
+            background-position: 50% 50%;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            width: 120px;
+            height: 80px;
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+        }
+
+        .bulle:after {
+            content: "Click to search!";
+            text-align: center;
+            width: 100px;
+            color: #fff;
+            font-size: 15px;
+            position: absolute;
+            top: 14px;
+            left: 8px;
         }
     }
+}
 
-    .bulle {
-        background-image: url("https://svgsilh.com/svg/156056-ffffff.svg");
-        background-position: 50% 50%;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        width: 120px;
-        height: 80px;
-        position: absolute;
-        bottom: 100px;
-        left: 50%;
+@keyframes bounce {
+    0% {
+        transform: scale(1, 1) translateY(0);
     }
-
-    .bulle:after {
-        content: "Click to search!";
-        text-align: center;
-        width: 100px;
-        color: #fff;
-        font-size: 20px;
-        position: absolute;
-        top: 12px;
-        left: 10px;
+    10% {
+        transform: scale(1.1, 0.9) translateY(0);
+    }
+    30% {
+        transform: scale(0.9, 1.1) translateY(-100px);
+    }
+    50% {
+        transform: scale(1.05, 0.95) translateY(0);
+    }
+    57% {
+        transform: scale(1, 1) translateY(-7px);
+    }
+    64% {
+        transform: scale(1, 1) translateY(0);
+    }
+    100% {
+        transform: scale(1, 1) translateY(0);
     }
 }
 
 .container-lists {
     position: relative;
+    overflow-y: auto;
+
     h2 {
         text-align: center;
         margin-bottom: 2em;
@@ -140,6 +179,7 @@
     border-radius: 1%;
 
     ul {
+        padding-top: 40px;
         text-decoration-style: none;
         margin: 1em 1em;
         padding-inline-start: 0;
@@ -151,32 +191,36 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            padding: 1em;
+            padding: 0.5em;
+            transition: all 400ms ease;
             &:hover {
                 box-shadow: 0 0 8px rgba(0, 0, 0, 0.25);
+                transform: scale(1.05);
             }
             .logo-bank {
                 position: absolute;
-                top: 5px;
-                right: 5px;
-                width: 100px;
+                top: 0px;
+                right: 0px;
+                width: 65px;
                 height: auto;
                 text-align: right;
             }
             a {
                 color: #121324;
+                font-size: 0.8em;
             }
             p {
                 font-style: italic;
                 color: #121324;
+                font-size: 0.8em;
             }
         }
     }
 
     .return-arrow {
-        width: 30px;
+        width: 40px;
         position: absolute;
-        top: 20px;
+        top: 10px;
         right: 20px;
         cursor: pointer;
         transition: 500ms ease-in-out;
@@ -184,28 +228,80 @@
             transform: translateX(-5px);
         }
     }
-
-    form {
-        margin: 5em 0;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        input {
-            height: 25px;
-            width: 70%;
-            border: solid 3px #66ccff;
-            background-color: rgba(228, 241, 254, 1);
-            padding: 0 1em;
+}
+form {
+    margin-top: -40px;
+    padding-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #121324;
+    input {
+        margin-top: -10px;
+        height: 25px;
+        width: 70%;
+        border: solid 3px #66ccff;
+        background-color: rgba(228, 241, 254, 1);
+        margin-bottom: 5px;
+    }
+    button {
+        margin-left: 1em;
+        background-color: rgba(228, 241, 254, 1);
+        border: none;
+        cursor: pointer;
+        background-color: #121324;
+        transition: 500ms ease-in-out;
+        &:hover {
+            transform: scale(1.05);
         }
-        button {
-            margin-left: 1em;
-            background-color: rgba(228, 241, 254, 1);
+    }
+}
+
+.leaflet-marker-pane {
+    img {
+        transition: 200ms ease-in;
+        &:hover {
+            box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.25);
+            transform: scale(1.05);
+        }
+    }
+    .pigmap {
+        &:hover {
+            box-shadow: none;
+        }
+    }
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    top: 5px;
+    right: 5px;
+    color: #8a65c7;
+    &:hover {
+        color: #e91e63;
+    }
+}
+
+.leaflet-popup-content-wrapper {
+    background-color: rgba(228, 241, 254, 1);
+    border: 2px solid #8a65c7;
+
+    h3 {
+        text-align: center;
+    }
+    .buttons {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 10px;
+        button,
+        a {
+            text-decoration: none;
+            background-color: #8a65c7;
+            border: solid 1px #fff;
+            color: #fff;
             border: none;
+            transition: 400ms ease-in;
+            padding: 3px;
             cursor: pointer;
-            transition: 500ms ease-in-out;
-            &:hover {
-                transform: scale(1.1);
-            }
         }
     }
 }

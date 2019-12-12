@@ -21,8 +21,10 @@ const Home = () => {
                         "Click on the card to discover the ATM's location in Liège"
                     }
                 </p>
-                <div className={"bulle"} />
-                <div className={"pig"} />
+                <div className={"translate"}>
+                    <div className={"bulle"} />
+                    <div className={"pig"} />
+                </div>
                 <div className={"route"} />
                 <div className={"by"}>
                     <p>{"By Bonnie and Clyde"}</p>
