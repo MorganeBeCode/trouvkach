@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
-import React, {useState, useEffect} from "react";
-import {Map, Marker, Popup, TileLayer} from "react-leaflet";
+import React, { useState, useEffect } from "react";
+import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import L from "leaflet";
 import "../assets/pig.svg";
+import "../assets/card.svg";
 
 // const moneyIcon = new L.DivIcon({
 //     html: `<img src="../assets/card.svg" style="width: 100%" />`,
@@ -113,7 +114,7 @@ function LeafletMap() {
 
     return (
         <div className={"map"}>
-            <Map style={{height: "80vh"}} center={usrLoc} zoom={15}>
+            <Map style={{ height: "80vh" }} center={usrLoc} zoom={15}>
                 <TileLayer
                     url={"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}
                     attribution={
@@ -123,63 +124,61 @@ function LeafletMap() {
                 <Marker position={usrLoc} icon={usrIcon}>
                     <Popup>{<h3>{"I'm here."}</h3>}</Popup>
                 </Marker>
-                {markersList.map(element => {
-                    return (
-                        <Marker
-                            key={element._id}
-                            position={positionSet(
-                                element.latitude,
-                                element.longitude,
-                            )}
-                            icon={
-                                new L.DivIcon({
-                                    html: `<img src="../assets/card.svg" style="width: 100%; filter: ${convertSvg(
-                                        element.bankDetails[0].color,
-                                    )};" />`,
-                                    iconSize: [60, 60],
-                                    popupAnchor: [-0.5, -5],
-                                    className: "",
-                                })
-                            }>
-                            <Popup>
-                                {
-                                    <div id={"center"}>
-                                        <div>
-                                            <h3>
-                                                {element.bankDetails[0].name}
-                                                {" ("}
-                                                {element.bankDetails[0].country}
-                                                {")"}
-                                            </h3>
-                                            <p>
-                                                <b>{"Address: "}</b>
-                                                {element.address}
-                                            </p>
-                                            <b>{"Website: "}</b>
-                                            <a
-                                                href={
-                                                    element.bankDetails[0].url
-                                                }
-                                                target={"blank"}>
-                                                {element.bankDetails[0].url}
-                                            </a>
-                                        </div>
-                                        <button
-                                            className={"deleteBTN"}
-                                            type={"button"}>
-                                            {"Delete"}
-                                        </button>
-                                        <button
-                                            className={"emptyBTN"}
-                                            type={"button"}>
-                                            {"Empty"}
-                                        </button>
+                {markersList.map(element => (
+                    <Marker
+                        key={element._id}
+                        position={positionSet(
+                            element.latitude,
+                            element.longitude,
+                        )}
+                        icon={
+                            new L.DivIcon({
+                                html: `<img src="../assets/card.svg" style="width: 100%; filter: ${convertSvg(
+                                    element.bankDetails[0].color,
+                                )};" />`,
+                                iconSize: [60, 60],
+                                popupAnchor: [-0.5, -5],
+                                className: "",
+                            })
+                        }>
+                        <Popup>
+                            {
+                                <div id={"center"}>
+                                    <div>
+                                        <h3>
+                                            {element.bankDetails[0].name}
+                                            {" ("}
+                                            {element.bankDetails[0].country}
+                                            {")"}
+                                        </h3>
+                                        <p>
+                                            <b>{"Address: "}</b>
+                                            {element.address}
+                                        </p>
+                                        <b>{"Website: "}</b>
+                                        <a
+                                            href={
+                                                element.bankDetails[0].url
+                                            }
+                                            target={"blank"}>
+                                            {element.bankDetails[0].url}
+                                        </a>
                                     </div>
-                                }
-                            </Popup>
-                        </Marker>
-                    );
-                })}
+                                    <button
+                                        className={"deleteBTN"}
+                                        type={"button"}>
+                                        {"Delete"}
+                                    </button>
+                                    <button
+                                        className={"emptyBTN"}
+                                        type={"button"}>
+                                        {"Empty"}
+                                    </button>
+                                </div>
+                            }
+                        </Popup>
+                    </Marker>
+                ))}
             </Map>
         </div>
     );
