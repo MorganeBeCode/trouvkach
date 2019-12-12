@@ -86,9 +86,9 @@ mongo.connect(url, (err, client) => {
                         ) {
                             result.push(el);
                         }
-                        if(
-                        index === item.length - 1){
+                        if (index === item.length - 1) {
                             res.json(result);
+                        }
                     });
                 });
         });
