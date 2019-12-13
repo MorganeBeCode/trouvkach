@@ -1,6 +1,7 @@
+/* eslint-disable no-console */
 /* eslint-disable prettier/prettier */
-import React, { useState, useEffect } from "react";
-import { Map, Marker, Popup, TileLayer } from "react-leaflet";
+import React, {useState, useEffect} from "react";
+import {Map, Marker, Popup, TileLayer} from "react-leaflet";
 import L from "leaflet";
 import "../assets/pig.svg";
 import "../assets/card.svg";
@@ -15,6 +16,7 @@ const usrIcon = new L.Icon({
     iconUrl: "../assets/pig.svg",
     iconSize: [100, 75],
     popupAnchor: [0, -10],
+    className: "pigmap",
 });
 
 function positionSet(p_lat, p_lon) {
@@ -28,6 +30,7 @@ function LeafletMap() {
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(position => {
             setusrLoc([position.coords.latitude, position.coords.longitude]);
+
             fetch(
                 `/api/${position.coords.latitude}/${position.coords.longitude}`,
             ).then(dataJSON => {
@@ -41,7 +44,6 @@ function LeafletMap() {
 
     function convertSvg(name) {
         let filter;
-        console.log(name);
         if (name === "4a961d") {
             filter =
                 "invert(44%) sepia(17%) saturate(2843%) hue-rotate(58deg) brightness(105%) contrast(77%)";
@@ -102,6 +104,26 @@ function LeafletMap() {
         return filter;
     }
 
+    function convertInput() {
+        let [address, setAddress] = useState();
+        const input = document.querySelector("#input").value;
+
+        fetch(
+            `https://nominatim.openstreetmap.org/search.php?q=${input}&format=json`,
+        ).then(dataJSON => {
+            dataJSON.json().then(response => {
+                address = response;
+                setAddress(address);
+                setusrLoc(address.lat, address.lon);
+            });
+        });
+    }
+
+    function handleInput(event) {
+        event.preventDefault();
+        convertInput();
+    }
+
     if (!markersList) {
         return (
             <div className={"load"}>
@@ -113,73 +135,95 @@ function LeafletMap() {
     }
 
     return (
-        <div className={"map"}>
-            <Map style={{ height: "80vh" }} center={usrLoc} zoom={15}>
-                <TileLayer
-                    url={"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}
-                    attribution={
-                        ' <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    }
+        <div>
+            <form onSubmit={handleInput}>
+                <input
+                    id={"input"}
+                    type={"text"}
+                    placeholder={"Research an ATM"}
+                    // value={"input"}
                 />
-                <Marker position={usrLoc} icon={usrIcon}>
-                    <Popup>{<h3>{"I'm here."}</h3>}</Popup>
-                </Marker>
-                {markersList.map(element => (
-                    <Marker
-                        key={element._id}
-                        position={positionSet(
-                            element.latitude,
-                            element.longitude,
-                        )}
-                        icon={
-                            new L.DivIcon({
-                                html: `<img src="../assets/card.svg" style="width: 100%; filter: ${convertSvg(
-                                    element.bankDetails[0].color,
-                                )};" />`,
-                                iconSize: [60, 60],
-                                popupAnchor: [-0.5, -5],
-                                className: "",
-                            })
-                        }>
-                        <Popup>
-                            {
-                                <div id={"center"}>
-                                    <div>
-                                        <h3>
-                                            {element.bankDetails[0].name}
-                                            {" ("}
-                                            {element.bankDetails[0].country}
-                                            {")"}
-                                        </h3>
-                                        <p>
-                                            <b>{"Address: "}</b>
-                                            {element.address}
-                                        </p>
-                                        <b>{"Website: "}</b>
-                                        <a
-                                            href={
-                                                element.bankDetails[0].url
-                                            }
-                                            target={"blank"}>
-                                            {element.bankDetails[0].url}
-                                        </a>
-                                    </div>
-                                    <button
-                                        className={"deleteBTN"}
-                                        type={"button"}>
-                                        {"Delete"}
-                                    </button>
-                                    <button
-                                        className={"emptyBTN"}
-                                        type={"button"}>
-                                        {"Empty"}
-                                    </button>
-                                </div>
-                            }
-                        </Popup>
+                <button type={"submit"}>
+                    <img
+                        src={"../assets/loupe.svg"}
+                        width={"24px"}
+                        height={"auto"}
+                    />
+                </button>
+            </form>
+            <div className={"map"}>
+                <Map style={{height: "80vh"}} center={usrLoc} zoom={15}>
+                    <TileLayer
+                        url={
+                            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        }
+                        attribution={
+                            ' <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        }
+                    />
+                    <Marker position={usrLoc} icon={usrIcon}>
+                        <Popup>{<h3>{"I'm here."}</h3>}</Popup>
                     </Marker>
-                ))}
-            </Map>
+                    {markersList.map(element => (
+                        <Marker
+                            key={element._id}
+                            position={positionSet(
+                                element.latitude,
+                                element.longitude,
+                            )}
+                            icon={
+                                new L.DivIcon({
+                                    html: `<img src="../assets/card.svg" style="width: 100%; filter: ${convertSvg(
+                                        element.bankDetails[0].color,
+                                    )};" />`,
+                                    iconSize: [60, 60],
+                                    popupAnchor: [-0.5, -5],
+                                    className: "",
+                                })
+                            }>
+                            <Popup>
+                                {
+                                    <div id={"center"}>
+                                        <div>
+                                            <h3
+                                                style={{
+                                                    borderColor: `#${element.bankDetails[0].color}`,
+                                                }}>
+                                                {element.bankDetails[0].name}
+                                                {" ("}
+                                                {element.bankDetails[0].country}
+                                                {")"}
+                                            </h3>
+                                            <p>
+                                                <b>{"Address: "}</b>
+                                                {element.address}
+                                            </p>
+                                            <b>{"Website: "}</b>
+                                            <a
+                                                href={
+                                                    element.bankDetails[0].url
+                                                }
+                                                target={"blank"}>
+                                                {element.bankDetails[0].url}
+                                            </a>
+                                        </div>
+                                        <div className={"buttons"}>
+                                            <a
+                                                href={`http://google.be/maps/dir/${usrLoc}/${element.latitude},${element.longitude}`}
+                                                target={"_blank"}>
+                                                {"GO"}
+                                            </a>
+                                            <button type={"button"}>
+                                                {"Request Deletion"}
+                                            </button>
+                                        </div>
+                                    </div>
+                                }
+                            </Popup>
+                        </Marker>
+                    ))}
+                </Map>
+            </div>
         </div>
     );
 }

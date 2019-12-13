@@ -52,6 +52,7 @@ mongo.connect(url, (err, client) => {
                     },
                     // cette méthode vient de cursor.toArray() et cursor = résultat obtenu par request
                 ])
+
                 .toArray((err2, item) => {
                     // LATITUDE //
                     const latitude = Number(req.params.latitude);
