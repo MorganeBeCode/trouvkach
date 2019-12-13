@@ -56,7 +56,7 @@ function Lists() {
                         className={"logo-bank"}
                         src={`/assets/banksicons/${element.bankDetails[0].icon}`}
                     />
-                    <a href={element.bankDetails[0].url}>
+                    <a href={element.bankDetails[0].url} target={"blank"}>
                         {element.bankDetails[0].name}
                     </a>
                     <p>{element.address}</p>
