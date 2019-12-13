@@ -112,7 +112,6 @@ function LeafletMap() {
             dataJSON.json().then(data => {
                 const response = data[0];
                 setusrLoc([response.lat, response.lon]);
-                console.log(usrLoc);
             });
         });
     }
@@ -134,7 +133,7 @@ function LeafletMap() {
 
     return (
         <div>
-            <form onSubmit={handleInput}>
+            <form onSubmit={handleInput} id={"form"}>
                 <input
                     id={"input"}
                     type={"text"}

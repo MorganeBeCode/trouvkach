@@ -10,7 +10,6 @@
         grid-column: 1;
         background-color: rgba(233, 30, 99, 0.85);
         border: solid 10px #66ccff;
-        border-radius: 1%;
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -20,7 +19,6 @@
         height: 80vh;
         grid-column: 3;
         background-color: rgba(228, 241, 254, 1);
-        border-radius: 1%;
     }
 }
 
@@ -28,7 +26,6 @@
     border: solid 10px #8a65c7;
     height: 80vh;
     width: auto;
-    border-radius: 1%;
 }
 
 .container-left {
@@ -175,7 +172,6 @@
     grid-column: 1;
     background-color: rgba(228, 241, 254, 1);
     border: solid 10px #66ccff;
-    border-radius: 1%;
 
     ul {
         padding-top: 40px;
@@ -236,10 +232,11 @@ form {
     justify-content: center;
     background-color: #121324;
     input {
+        padding-left: 20px;
         margin-top: -10px;
         height: 25px;
         width: 100%;
-        border: solid 3px #66ccff;
+        border: solid 5px #66ccff;
         background-color: rgba(228, 241, 254, 1);
         margin-bottom: 5px;
     }

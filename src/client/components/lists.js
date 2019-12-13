@@ -15,20 +15,35 @@ import "../assets/banksicons/kbc.png";
 import "../assets/banksicons/keytrade.png";
 
 function Lists() {
+    const [usrLoc, setusrLoc] = useState([50.63, 5.58]);
     let [markersList, setmarkersList] = useState();
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(position => {
-            fetch(
-                `/api/${position.coords.latitude}/${position.coords.longitude}`,
-            ).then(dataJSON => {
-                dataJSON.json().then(markers => {
-                    markersList = markers;
-                    setmarkersList(markersList);
-                });
-            });
+            setusrLoc([position.coords.latitude, position.coords.longitude]);
         });
     }, []);
+
+    useEffect(() => {
+        fetch(`/api/${usrLoc[0]}/${usrLoc[1]}`).then(dataJSON => {
+            dataJSON.json().then(markers => {
+                markersList = markers;
+                setmarkersList(markersList);
+            });
+        });
+    }, [usrLoc]);
+
+    document.querySelector("#form").addEventListener("submit", e => {
+        const inputBis = e.target.querySelector("#input").value;
+        fetch(
+            `https://nominatim.openstreetmap.org/search.php?q=${inputBis}&format=json`,
+        ).then(dataJSON => {
+            dataJSON.json().then(data => {
+                const response = data[0];
+                setusrLoc([response.lat, response.lon]);
+            });
+        });
+    });
 
     return [
         markersList &&
