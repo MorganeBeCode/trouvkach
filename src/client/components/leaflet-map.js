@@ -24,7 +24,7 @@ function positionSet(p_lat, p_lon) {
 }
 
 function LeafletMap() {
-    const [usrLoc, setusrLoc] = useState();
+    let [usrLoc, setusrLoc] = useState();
     let [markersList, setmarkersList] = useState();
 
     useEffect(() => {
@@ -105,16 +105,14 @@ function LeafletMap() {
     }
 
     function convertInput() {
-        let [address, setAddress] = useState();
         const input = document.querySelector("#input").value;
-
         fetch(
             `https://nominatim.openstreetmap.org/search.php?q=${input}&format=json`,
         ).then(dataJSON => {
-            dataJSON.json().then(response => {
-                address = response;
-                setAddress(address);
-                setusrLoc(address.lat, address.lon);
+            dataJSON.json().then(data => {
+                const response = data[0];
+                usrLoc = `${response.lat}, ${response.lon}`;
+                console.log(usrLoc);
             });
         });
     }
