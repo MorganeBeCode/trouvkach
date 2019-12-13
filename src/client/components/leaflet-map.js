@@ -5,6 +5,7 @@ import {Map, Marker, Popup, TileLayer} from "react-leaflet";
 import L from "leaflet";
 import "../assets/pig.svg";
 import "../assets/card.svg";
+import "../assets/../assets/loupe.svg";
 
 // const moneyIcon = new L.DivIcon({
 //     html: `<img src="../assets/card.svg" style="width: 100%" />`,
