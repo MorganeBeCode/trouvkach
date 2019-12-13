@@ -1,3 +1,4 @@
+// eslint-disable-next-line prettier/prettier
 import React, { useState } from "react";
 import Map from "./map";
 import "../assets/cardpurple.svg";
@@ -48,7 +49,7 @@ const Home = () => {
         );
     }
 
-    return <LeafletMap />;
+    return <Map />;
 };
 
 export default Home;
