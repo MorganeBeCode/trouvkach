@@ -22,6 +22,7 @@ An ATM finder with an interactive map, made with React.
 #### Extra feature:
 
 Search bar to bypass geolocation and enter any address to display ATMs nearby.
+
 _To turn geolocation back on, just search for no address (= empty search bar)._
 
 ## Ressources
