@@ -37,7 +37,7 @@ function Lists() {
     document.querySelector("#form").addEventListener("submit", e => {
         const inputBis = e.target.querySelector("#input").value;
         fetch(
-            `https://nominatim.openstreetmap.org/search.php?q=${inputBis}&format=json`,
+            `https://cors-anywhere.herokuapp.com/https://nominatim.openstreetmap.org/search.php?q=${inputBis}&format=json`,
         ).then(dataJSON => {
             dataJSON.json().then(data => {
                 const response = data[0];
