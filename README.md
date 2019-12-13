@@ -1,7 +1,7 @@
 # Trouvkach
 
 -   Authors: [Augustin Dumont](https://github.com/AugustinDumont), [Morgane Jansen](https://github.com/MorganeBeCode), [Jean-François Stassen](https://github.com/jfstassen)
--   Version: 1.0.0
+-   Version: 1.0.1
 -   [Page Heroku](https://trouvkach-bonnie-and-clyde.herokuapp.com/)
 
 ## Description
