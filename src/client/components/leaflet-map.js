@@ -24,23 +24,23 @@ function positionSet(p_lat, p_lon) {
 }
 
 function LeafletMap() {
-    let [usrLoc, setusrLoc] = useState();
+    const [usrLoc, setusrLoc] = useState([50.63, 5.58]);
     let [markersList, setmarkersList] = useState();
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(position => {
             setusrLoc([position.coords.latitude, position.coords.longitude]);
-
-            fetch(
-                `/api/${position.coords.latitude}/${position.coords.longitude}`,
-            ).then(dataJSON => {
-                dataJSON.json().then(markers => {
-                    markersList = markers;
-                    setmarkersList(markersList);
-                });
-            });
         });
     }, []);
+
+    useEffect(() => {
+        fetch(`/api/${usrLoc[0]}/${usrLoc[1]}`).then(dataJSON => {
+            dataJSON.json().then(markers => {
+                markersList = markers;
+                setmarkersList(markersList);
+            });
+        });
+    }, [usrLoc]);
 
     function convertSvg(name) {
         let filter;
@@ -111,7 +111,7 @@ function LeafletMap() {
         ).then(dataJSON => {
             dataJSON.json().then(data => {
                 const response = data[0];
-                usrLoc = `${response.lat}, ${response.lon}`;
+                setusrLoc([response.lat, response.lon]);
                 console.log(usrLoc);
             });
         });
