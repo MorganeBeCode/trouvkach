@@ -1,3 +1,4 @@
+/* eslint-disable no-undefined */
 /* eslint-disable no-console */
 /* eslint-disable prettier/prettier */
 import React, {useState, useEffect} from "react";
@@ -112,7 +113,16 @@ function LeafletMap() {
         ).then(dataJSON => {
             dataJSON.json().then(data => {
                 const response = data[0];
-                setusrLoc([response.lat, response.lon]);
+                if (response === undefined) {
+                    navigator.geolocation.getCurrentPosition(position => {
+                        setusrLoc([
+                            position.coords.latitude,
+                            position.coords.longitude,
+                        ]);
+                    });
+                } else {
+                    setusrLoc([response.lat, response.lon]);
+                }
             });
         });
     }

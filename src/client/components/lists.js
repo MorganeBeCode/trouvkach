@@ -1,3 +1,4 @@
+/* eslint-disable no-undefined */
 import React, {useState, useEffect} from "react";
 import "../assets/banksicons/bnp.png";
 import "../assets/banksicons/belfius.png";
@@ -40,7 +41,16 @@ function Lists() {
         ).then(dataJSON => {
             dataJSON.json().then(data => {
                 const response = data[0];
-                setusrLoc([response.lat, response.lon]);
+                if (response === undefined) {
+                    navigator.geolocation.getCurrentPosition(position => {
+                        setusrLoc([
+                            position.coords.latitude,
+                            position.coords.longitude,
+                        ]);
+                    });
+                } else {
+                    setusrLoc([response.lat, response.lon]);
+                }
             });
         });
     });
