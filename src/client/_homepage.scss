@@ -18,7 +18,7 @@
     //     }
     // }
     .translate {
-        animation: translate 20s;
+        animation: translate 15s;
         position: absolute;
         bottom: 0;
         left: 0;
@@ -63,7 +63,7 @@
 
     @keyframes translate {
         to {
-            transform: translateX(170px);
+            transform: translateX(70px);
         }
     }
 
