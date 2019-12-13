@@ -17,55 +17,60 @@
     //         opacity: 0;
     //     }
     // }
-
-    .bulle {
-        width: 200px;
-        height: 170px;
-        background-image: url("https://svgsilh.com/svg/156056-ffffff.svg");
-        background-position: 50% 50%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        position: absolute;
-        bottom: 120px;
-        left: 220px;
-        filter: drop-shadow(1px 1px 0.5px grey);
-        // transition: translate 4s ease;
-    }
-
-    .bulle:after {
-        content: "I have flair when it  comes to finding money !";
-        text-align: center;
-        width: 150px;
-        color: #fff;
-        font-size: 20px;
-        position: absolute;
-        top: 40px;
-        left: 25px;
-    }
-
-    .pig {
-        width: 200px;
-        height: 150px;
-        background-image: url("https://svgsilh.com/svg/712593-e91e63.svg");
-        background-position: 50% 50%;
-        background-size: cover;
-        background-repeat: no-repeat;
+    .translate {
+        animation: translate 15s;
         position: absolute;
         bottom: 0;
-        left: 70px;
-        filter: drop-shadow(1px 2px white);
-        // transition: translate 4s ease;
+        left: 0;
+        .bulle {
+            width: 200px;
+            height: 170px;
+            background-image: url("./assets/bulle.svg");
+            background-position: 50% 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            bottom: 120px;
+            left: 220px;
+            filter: drop-shadow(1px 1px 0.5px grey);
+            // transition: translate 4s ease;
+        }
+
+        .bulle:after {
+            content: "I have flair when it  comes to finding money !";
+            text-align: center;
+            width: 150px;
+            color: #fff;
+            font-size: 18px;
+            position: absolute;
+            top: 29px;
+            left: 25px;
+        }
+
+        .pig {
+            width: 200px;
+            height: 150px;
+            background-image: url("./assets/pig.svg");
+            background-position: 50% 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            bottom: 0;
+            left: 70px;
+            filter: drop-shadow(1px 2px white);
+        }
     }
 
-    // .translate {
-    //     transform: translate(2000px);
-    // }
+    @keyframes translate {
+        to {
+            transform: translateX(70px);
+        }
+    }
 
     .route {
         width: 250px;
         height: 400px;
-        background-image: url("https://svgsilh.com/svg/2009312-ffffff.svg");
-        background-position: 50% 50%;
+        background-image: url("./assets/direction.svg");
         background-size: cover;
         background-repeat: no-repeat;
         position: absolute;
@@ -105,11 +110,9 @@
         margin-top: 20px;
         width: 350px;
         height: 350px;
-        // box-sizing: border-box;
         border-radius: 50%;
         border-top: 10px solid #66ccff;
         position: relative;
-        // animation: rotation 5s linear infinite;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -128,7 +131,6 @@
         left: 0;
         top: -10px;
         filter: drop-shadow(1px 2px white);
-        // box-sizing: border-box;
         border-radius: 50%;
     }
 

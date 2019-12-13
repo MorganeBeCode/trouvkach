@@ -1,24 +1,14 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable react/self-closing-comp */
 import React, { useState } from "react";
-// import Map from "./map";
-import LeafletMap from "./leaflet-map";
+import Map from "./map";
+import "../assets/cardpurple.svg";
+import "../assets/marker.svg";
+import "../assets/bulle.svg";
 
 const Home = () => {
     const [notReady, setReady] = useState(true);
 
-    // const pageTransition = () => {
-    //     const propPig = useRef(null);
-    //     const propHomePage = useRef(null);
-    //     const propBulle = useRef(null);
-    //     propPig.classList.add("translate");
-    //     propBulle.classList.add("translate");
-    //     propHomePage.classList.add("fade-out");
-    // };
-
     const handleClick = () => {
         setReady(false);
-        // pageTransition();
     };
 
     if (notReady) {
@@ -31,9 +21,11 @@ const Home = () => {
                         "Click on the card to discover the ATM's location in Liège"
                     }
                 </p>
-                <div className={"bulle"}></div>
-                <div className={"pig"}></div>
-                <div className={"route"}></div>
+                <div className={"translate"}>
+                    <div className={"bulle"} />
+                    <div className={"pig"} />
+                </div>
+                <div className={"route"} />
                 <div className={"by"}>
                     <p>{"By Bonnie and Clyde"}</p>
                 </div>
@@ -43,15 +35,11 @@ const Home = () => {
                         <span>
                             <img
                                 className={"marker"}
-                                src={
-                                    "https://svgsilh.com/svg/1971129-673ab7.svg"
-                                }
+                                src={"../assets/marker.svg"}
                             />
                             <img
                                 className={"card"}
-                                src={
-                                    "https://svgsilh.com/svg/1300155-673ab7.svg"
-                                }
+                                src={"../assets/cardpurple.svg"}
                             />
                         </span>
                     </div>
