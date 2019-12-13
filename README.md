@@ -20,7 +20,7 @@ An ATM finder with an interactive map, made with React.
 -   [ ] Possibility to mark ATM as "empty", update or delete it
 
 #### Extra feature: 
-Search bar to bypass geolocation and enter any adress to display ATMs nearby.
+Search bar to bypass geolocation and enter any address to display ATMs nearby.
 
 
 ## Ressources
