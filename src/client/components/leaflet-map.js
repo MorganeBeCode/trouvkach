@@ -137,7 +137,7 @@ function LeafletMap() {
                 <input
                     id={"input"}
                     type={"text"}
-                    placeholder={"Research an ATM"}
+                    placeholder={"Type your address to find the closest ATM"}
                     // value={"input"}
                 />
                 <button type={"submit"}>
