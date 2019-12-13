@@ -1,4 +1,4 @@
-# Trouvkach 
+# Trouvkach
 
 -   Authors: [Augustin Dumont](https://github.com/AugustinDumont), [Morgane Jansen](https://github.com/MorganeBeCode), [Jean-François Stassen](https://github.com/jfstassen)
 -   Version: 1.0.0
@@ -19,9 +19,10 @@ An ATM finder with an interactive map, made with React.
 -   [ ] Display of the distance between the user and each ATM
 -   [ ] Possibility to mark ATM as "empty", update or delete it
 
-#### Extra feature: 
-Search bar to bypass geolocation and enter any address to display ATMs nearby.
+#### Extra feature:
 
+Search bar to bypass geolocation and enter any address to display ATMs nearby.
+_To turn geolocation back on, just search for no address (= empty search bar)._
 
 ## Ressources
 
@@ -31,4 +32,3 @@ Search bar to bypass geolocation and enter any address to display ATMs nearby.
 -   [Leaflet](https://leafletjs.com/)
 -   [React-leaflet](https://react-leaflet.js.org/)
 -   [Express](https://www.npmjs.com/package/express)
-
